@@ -1,0 +1,227 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 7.5rem;
+    font-weight: 900;
+    line-height: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+h3 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 100%;
+    text-align: center;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 130%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    margin: 16px 24ox;
+}
+
+.row>p {
+    margin-left: 8px;
+}
+
+.sketch-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+#cta {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    padding: 12px 16px;
+    background-color: rgba(255,255,255,0.8);
+    backdrop-filter: blur(2px);
+    opacity: 100;
+    transition: all 700ms ease-in;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+#settings-trigger {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px 12px;
+    background-color: rgba(255,255,255,0.8);
+    backdrop-filter: blur(2px);
+    opacity: 100;
+    transition: all 700ms ease-in;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#settings {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(400px, -50%);
+    width: 400px;
+    height: 80vh;
+    background-color: rgba(255,255,255,0.8);
+    backdrop-filter: blur(2px);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    transition: all 700ms ease-in;
+    padding: 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+#settings.open {
+    transform: translate(0, -50%);
+}
+
+#settings-trigger.open {
+    transform: translate(-400px, -50%);
+}
+
+#settings-trigger.hide {
+    opacity: 0;
+    transform: translate(64px, -50%);
+}
+
+#cta.hide {
+    opacity: 0;
+    transform: translate(-50%, 64px);
+}
+
+#cta>p {
+    margin: 0;
+    padding: 0;
+}
+
+.rail {
+    height: 150vh;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.blog-container {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 32vh;
+    margin-top: 24px;
+}
+
+.blog-container>p {
+    padding: 0 12px 0 8px;
+}
+
+#hero-title {
+    opacity: 100;
+    transform: translateY(0);
+    transition: all 800ms ease-in;
+    margin-bottom: 24px;
+    margin-top: 24px;
+}
+
+#hero-title.show {
+    opacity: 100;
+    transform: translateY(0);
+}
+
+#hero-title>h1 {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(144,24,179,1) 0%, rgba(255,109,0,1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.label {
+    margin-bottom: 4px;
+    margin-top: 16px;
+}
+
+#save-button {
+    margin-bottom: 16px;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#save-button>button {
+    padding: 12px 24px;
+    color: white;
+    background-color: #111;
+    border: none;
+}
+
+input[type="range"] {
+    width: 200px;
+    background-color: transparent;  
+    /* Removes some defaults */
+    -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background: #000000;
+    height: 3px;
+    -webkit-appearance: none;
+    cursor: pointer; 
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    width: 15px;
+    height: 15px;
+    background: #111;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -6px;
+    border-radius: 8px;
+    
+  }
+
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#count {
+    padding: 2px 0;
+}

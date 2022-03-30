@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketch</title>
+    <link rel="stylesheet" type="text/css" href="../libraries/p5js/p5.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+  <body>
+    <section>
+      <div id="hero-rail" class="rail">
+        <div id="hero-sketch-container" class="sketch-container">
+          <div id="cta">
+            <p>Scroll down to learn more</p>
+          </div>
+          <div id="settings-trigger" onclick="openSettings()">
+            <span>S</span>
+            <span>E</span>
+            <span>T</span>
+            <span>T</span>
+            <span>I</span>
+            <span>N</span>
+            <span>G</span>
+            <span>S</span>
+          </div>
+          <div id="settings">
+            <div class="header">
+              <div>
+                <p class="label">Background Color</p>
+                <div id="background-color" class="row"></div>
+              </div>
+              <div>
+                <p class="label">Particle Count</p>
+                <div id="count" class="row"></div>
+              </div>
+            </div>
+            <p class="label">Noise Magnitude</p>
+            <div id="magnitude" class="row"></div>
+            <p class="label">Particle Speed</p>
+            <div id="speed" class="row"></div>
+            <p class="label">Noise Scale</p>
+            <div id="scale" class="row"></div>
+            <p class="label">Stroke Color</p>
+            <div id="color" class="row"></div>
+            <p class="label">Stroke Weight</p>
+            <div id="weight" class="row"></div>
+            <div id="save-button"></div>
+          </div>
+        </div>
+      </div>
+      <div class="blog-container">
+        <div id="hero-title">
+          <h1>Make it POP!!</h1>
+          <h3>Create and sell your own NFT</h3>
+        </div>
+        <p id="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, esse asperiores perferendis laudantium veritatis libero consequuntur ea voluptas culpa explicabo. Dignissimos dolores velit deleniti numquam possimus ea obcaecati est ad.</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, esse asperiores perferendis laudantium veritatis libero consequuntur ea voluptas culpa explicabo. Dignissimos dolores velit deleniti numquam possimus ea obcaecati est ad. <br>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, esse asperiores perferendis laudantium veritatis libero consequuntur ea voluptas culpa explicabo. Dignissimos dolores velit deleniti numquam possimus ea obcaecati est ad.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, esse asperiores perferendis laudantium veritatis libero consequuntur ea voluptas culpa explicabo. Dignissimos dolores velit deleniti numquam possimus ea obcaecati est ad.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, esse asperiores perferendis laudantium veritatis libero consequuntur ea voluptas culpa explicabo. Dignissimos dolores velit deleniti numquam possimus ea obcaecati est ad. <br>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, esse asperiores perferendis laudantium veritatis libero consequuntur ea voluptas culpa explicabo. Dignissimos dolores velit deleniti numquam possimus ea obcaecati est ad.
+          Quia, esse asperiores perferendis laudantium veritatis libero consequuntur ea voluptas culpa explicabo. Dignissimos dolores velit deleniti numquam possimus ea obcaecati est ad.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, esse asperiores perferendis laudantium veritatis libero consequuntur ea voluptas culpa explicabo. Dignissimos dolores velit deleniti numquam possimus ea obcaecati est ad. <br>
+          Consequuntur ea voluptas culpa explicabo. Dignissimos dolores velit deleniti numquam possimus ea obcaecati est ad.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, esse asperiores perferendis laudantium veritatis libero consequuntur ea voluptas culpa explicabo. Dignissimos dolores velit deleniti numquam possimus ea obcaecati est ad.
+        </p>
+      </div>
+    </section>
+    <script type="text/javascript">
+      let isSettingsOpen = false;
+      function openSettings() {
+        if (!isSettingsOpen) {
+          document.getElementById('settings-trigger').classList.add("open")
+          document.getElementById('settings').classList.add("open")
+          isSettingsOpen = true;
+        } else {
+          document.getElementById('settings-trigger').classList.remove("open")
+          document.getElementById('settings').classList.remove("open")
+          isSettingsOpen = false;
+        }
+      }
+
+      window.addEventListener('scroll', () => {
+        let scrolled = window.pageYOffset;
+        let railHeight = document.getElementById('hero-rail').scrollHeight;
+        let sketchHeight = document.getElementById('hero-sketch-container').scrollHeight;
+
+        let trigger = (railHeight- window.innerHeight) * 0.75;
+
+        let x = invlerp(trigger, railHeight - window.innerHeight * 0.5 - 200, scrolled)
+
+        let top = lerp(0, (window.innerHeight - sketchHeight) * 0.5, x)
+        let animatedWidth = lerp(window.innerWidth, 800, x)
+        let animatedHeight = lerp(window.innerHeight, 400, x)
+
+        document.getElementById('hero-sketch-container').setAttribute("style",`width: ${animatedWidth}px; height: ${animatedHeight}px; top: ${top}px`);
+      
+        if (scrolled >= 96)
+        {
+          document.getElementById('cta').classList.add("hide");
+          document.getElementById('settings-trigger').classList.add("hide")
+          document.getElementById('settings').classList.remove("open")
+        } else {
+          document.getElementById('cta').classList.remove("hide")
+          document.getElementById('settings-trigger').classList.remove("hide")
+        }
+        
+
+        // let isTitleVisible = false;
+        // isInViewport(document.getElementById('hero-title')) == true && !isTitleVisible
+        // ? document.getElementById('hero-title').classList.add("show")
+        // : document.getElementById('hero-title').classList.remove("show")
+
+        let isContentVisible = false;
+        isInViewport(document.getElementById('content')) == true && !isTitleVisible
+        ? document.getElementById('content').classList.add("show")
+        : document.getElementById('content').classList.remove("show")
+      })
+    </script>
+    <script src="../libraries/p5js/p5.min.js"></script>
+    <script src="../libraries/p5js/libraries/p5.svg.js"></script>
+    <script src="sketch.js"></script>
+    <script src="particle.js"></script>
+    <script src="flowField.js"></script>
+    <script src="functions.js"></script>
+  </body>
+</html>
